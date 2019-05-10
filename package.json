@@ -1,0 +1,42 @@
+{
+  "name": "san-loader-plus",
+  "version": "0.0.1",
+  "description": "San component loader for Webpack",
+  "main": "lib/loader",
+  "repository": "wangzhengbo/san-loader-plus",
+  "keywords": [
+    "san",
+    "webpack",
+    "loader"
+  ],
+  "files": [
+    "index.js",
+    "lib"
+  ],
+  "author": "ecomfe",
+  "license": "MIT",
+  "scripts": {
+    "clean": "rimraf lib",
+    "uglify": "uglifyjs --ie8 --compress --mangle --toplevel -o lib/helper.js lib/helper.js && uglifyjs --ie8 --compress --mangle --toplevel -o lib/index.js lib/index.js",
+    "build": "npm run clean && babel --minified --no-comments src -d lib && npm run uglify",
+    "test": "mocha test/test.js --slow 5000 --timeout 10000"
+  },
+  "dependencies": {
+    "san-mixin": "^0.2.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.4",
+    "@babel/preset-env": "^7.4.4",
+    "chai": "^4.2.0",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "hash-sum": "^1.0.2",
+    "jsdom": "^15.0.0",
+    "mocha": "^6.1.4",
+    "rimraf": "^2.6.3",
+    "san-loader": "^0.0.7",
+    "source-map": "^0.7.3",
+    "uglify-js": "^3.5.11",
+    "webpack": "^4.31.0"
+  }
+}
