@@ -121,6 +121,7 @@ page.san
 
 ## Thanks
 
+* [san-mixin](https://github.com/Dafrok/san-mixin)
 * [san-loader](https://github.com/ecomfe/san-loader)
 * [vue-loader](https://github.com/vuejs/vue-loader)
 
