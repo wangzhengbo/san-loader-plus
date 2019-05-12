@@ -2,11 +2,13 @@ import sanMixin from 'san-mixin'
 
 const globalMixins = []
 const globalComponents = {}
+const globalFilters = {}
 let hasGlobalComponents = false
+let hasGlobalFilters = false
 
 function merge(oldObj, newObj) {
   for (let key in newObj) {
-      oldObj[key] = newObj[key]
+    oldObj[key] = newObj[key]
   }
   return oldObj
 }
@@ -23,10 +25,15 @@ export const doMixin = function(sanComponent, sanProto) {
       mixins.push(globalMixins[i])
     }
   }
-  if (hasGlobalComponents) {
-    mixins.push({
-      components: globalComponents
-    })
+  if (hasGlobalComponents || hasGlobalFilters) {
+    const mixin = {}
+    if (hasGlobalComponents) {
+      mixin.components = globalComponents
+    }
+    if (hasGlobalFilters) {
+      mixin.filters = globalFilters
+    }
+    mixins.push(mixin)
   }
 
   if (isArray(sanProto.mixins)) {
@@ -53,4 +60,10 @@ export const mixin = function(globalMixin) {
 export const component = function(name, sanComponent) {
   globalComponents[name] = sanComponent
   hasGlobalComponents = false
+}
+
+// Register global filter
+export const filter = function(name, sanFilter) {
+  globalFilters[name] = sanFilter
+  hasGlobalFilters = false
 }

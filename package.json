@@ -1,6 +1,6 @@
 {
   "name": "san-loader-plus",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "San component loader for Webpack with mixin and global component supports",
   "main": "lib/index",
   "module": "src/index",
@@ -20,10 +20,11 @@
   "author": "ecomfe",
   "license": "MIT",
   "scripts": {
+    "format": "prettier src/**/*.js --write",
     "lint": "eslint src",
     "clean": "rimraf lib",
     "uglify": "uglifyjs --ie8 --compress --mangle --toplevel -o lib/helper.js lib/helper.js && uglifyjs --ie8 --compress --mangle --toplevel -o lib/index.js lib/index.js",
-    "build": "npm run lint && npm run clean && babel --minified --no-comments src -d lib && npm run uglify",
+    "build": "npm run format && npm run lint && npm run clean && babel --minified --no-comments src -d lib && npm run uglify",
     "test": "mocha test/test.js --slow 5000 --timeout 10000",
     "prepublish": "npm run build"
   },
@@ -42,6 +43,7 @@
     "hash-sum": "^1.0.2",
     "jsdom": "^15.0.0",
     "mocha": "^6.1.4",
+    "prettier": "^1.17.0",
     "rimraf": "^2.6.3",
     "source-map": "^0.7.3",
     "uglify-js": "^3.5.11",
