@@ -1,17 +1,21 @@
 {
   "name": "san-loader-plus",
-  "version": "0.0.1",
-  "description": "San component loader for Webpack",
-  "main": "lib/loader",
+  "version": "0.0.3",
+  "description": "San component loader for Webpack with mixin and global component supports",
+  "main": "lib/index",
+  "module": "src/index",
   "repository": "wangzhengbo/san-loader-plus",
   "keywords": [
     "san",
     "webpack",
-    "loader"
+    "loader",
+    "global",
+    "mixin",
+    "component"
   ],
   "files": [
-    "index.js",
-    "lib"
+    "lib",
+    "src"
   ],
   "author": "ecomfe",
   "license": "MIT",
@@ -19,9 +23,12 @@
     "clean": "rimraf lib",
     "uglify": "uglifyjs --ie8 --compress --mangle --toplevel -o lib/helper.js lib/helper.js && uglifyjs --ie8 --compress --mangle --toplevel -o lib/index.js lib/index.js",
     "build": "npm run clean && babel --minified --no-comments src -d lib && npm run uglify",
-    "test": "mocha test/test.js --slow 5000 --timeout 10000"
+    "test": "mocha test/test.js --slow 5000 --timeout 10000",
+    "prepubllish": "npm run build"
   },
+  "browserslist": "> 0.25%, not ie < 6",
   "dependencies": {
+    "san-loader": "^0.0.7",
     "san-mixin": "^0.2.2"
   },
   "devDependencies": {
@@ -34,7 +41,6 @@
     "jsdom": "^15.0.0",
     "mocha": "^6.1.4",
     "rimraf": "^2.6.3",
-    "san-loader": "^0.0.7",
     "source-map": "^0.7.3",
     "uglify-js": "^3.5.11",
     "webpack": "^4.31.0"

@@ -1,4 +1,4 @@
-const sanLoader = require("san-loader")
+import sanLoader from 'san-loader'
 
 module.exports = function(content) {
   const output = sanLoader.call(this, content)
