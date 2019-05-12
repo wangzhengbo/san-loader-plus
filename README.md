@@ -2,7 +2,7 @@
 
 [![Build Status](https://circleci.com/gh/ecomfe/san-loader/tree/master.svg?style=shield)](https://circleci.com/gh/ecomfe/san-loader/tree/master) [![npm package](https://img.shields.io/npm/v/san-loader.svg?maxAge=2592000)](https://www.npmjs.com/package/san-loader) [![Dependencies](http://img.shields.io/david/ecomfe/san-loader.svg)](https://david-dm.org/ecomfe/san-loader)
 
-> San component loader for [Webpack](http://webpack.github.io) with mixin and global component supports.
+> [San](https://github.com/baidu/san) component loader for [Webpack](http://webpack.github.io) with mixin and global component supports.
 
 
 It allows you to write your components in this format:

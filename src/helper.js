@@ -12,7 +12,7 @@ function merge(oldObj, newObj) {
 }
 
 function isArray(obj) {
-  return obj && Object.prototype.toString.call(arg) === '[object Array]'
+  return obj && Object.prototype.toString.call(obj) === '[object Array]'
 }
 
 export const doMixin = function(sanComponent, sanProto) {

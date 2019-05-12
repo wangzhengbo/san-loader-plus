@@ -1,6 +1,6 @@
 {
   "name": "san-loader-plus",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "San component loader for Webpack with mixin and global component supports",
   "main": "lib/index",
   "module": "src/index",
@@ -20,9 +20,10 @@
   "author": "ecomfe",
   "license": "MIT",
   "scripts": {
+    "lint": "eslint src",
     "clean": "rimraf lib",
     "uglify": "uglifyjs --ie8 --compress --mangle --toplevel -o lib/helper.js lib/helper.js && uglifyjs --ie8 --compress --mangle --toplevel -o lib/index.js lib/index.js",
-    "build": "npm run clean && babel --minified --no-comments src -d lib && npm run uglify",
+    "build": "npm run lint && npm run clean && babel --minified --no-comments src -d lib && npm run uglify",
     "test": "mocha test/test.js --slow 5000 --timeout 10000",
     "prepubllish": "npm run build"
   },
@@ -36,6 +37,7 @@
     "@babel/core": "^7.4.4",
     "@babel/preset-env": "^7.4.4",
     "chai": "^4.2.0",
+    "eslint": "^5.16.0",
     "extract-text-webpack-plugin": "^3.0.2",
     "hash-sum": "^1.0.2",
     "jsdom": "^15.0.0",
