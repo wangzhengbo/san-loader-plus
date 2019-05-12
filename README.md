@@ -2,7 +2,7 @@
 
 [![Build Status](https://circleci.com/gh/ecomfe/san-loader/tree/master.svg?style=shield)](https://circleci.com/gh/ecomfe/san-loader/tree/master) [![npm package](https://img.shields.io/npm/v/san-loader.svg?maxAge=2592000)](https://www.npmjs.com/package/san-loader) [![Dependencies](http://img.shields.io/david/ecomfe/san-loader.svg)](https://david-dm.org/ecomfe/san-loader)
 
-> [San](https://github.com/baidu/san) component loader for [Webpack](http://webpack.github.io) with mixin and global component supports.
+> [San](https://github.com/baidu/san) component loader for [Webpack](http://webpack.github.io) with mixin, global component and global filter supports.
 
 
 It allows you to write your components in this format:
@@ -27,6 +27,17 @@ anotherGlobalComponent.san
     export default {
     }
 </script>
+```
+
+globalFilter.js
+```
+export const toUpperCase = function(value) {
+  return value.toUpperCase()
+}
+
+export const toLowerCase = function(value) {
+  return value.toLowerCase()
+}
 ```
 
 globalMixin.js
@@ -64,13 +75,16 @@ mixin.js
 
 main.js
 ```js
-    import { mixin, component } from 'san-loader-plus/lib/helper'
+    import { mixin, component, filter } from 'san-loader-plus/lib/helper'
     import anotherGlobalComponent from './anotherGlobalComponent.san'
     import globalMixin from './globalMixin'
     import anotherGlobalMixin from './anotherGlobalMixin'
+    import { toUpperCase, toLowerCase } from './globalFilter'
 
     // register global component
     component('another-global-component', anotherGlobalComponent)
+    filter('upper', toUpperCase)
+    filter('lower', toLowerCase)
 
     // register global mixin
     mixin(globalMixin)
@@ -81,7 +95,8 @@ page.san
 ```
 <template>
     <div class="hello">
-      hello {{msg}}
+      hello {{ msg | upper }},
+      hello {{ msg | lower }}
       <global-component />
       <another-global-component />
     </div>
@@ -92,7 +107,7 @@ page.san
     export default {
         mixins: [mixin],
         data: {
-            msg: 'world'
+            msg: 'World'
         }
     }
 </script>
