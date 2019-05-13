@@ -1,6 +1,6 @@
 {
   "name": "san-loader-plus",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "San component loader for Webpack with mixin and global component supports",
   "main": "lib/index",
   "module": "src/index",

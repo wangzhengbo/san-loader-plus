@@ -59,11 +59,11 @@ export const mixin = function(globalMixin) {
 // Register global component
 export const component = function(name, sanComponent) {
   globalComponents[name] = sanComponent
-  hasGlobalComponents = false
+  hasGlobalComponents = true
 }
 
 // Register global filter
 export const filter = function(name, sanFilter) {
   globalFilters[name] = sanFilter
-  hasGlobalFilters = false
+  hasGlobalFilters = true
 }
